@@ -1,0 +1,37 @@
+{
+    "name": "khwua/bs-breeze",
+    "description": "Minimal Laravel authentication scaffolding with Blade and Bootstrap css.",
+    "keywords": ["laravel", "auth"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ammar Kannas",
+            "email": "ammarkannas@outlook.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1.0",
+        "laravel/framework": "^10.10",
+        "laravel/breeze": "^1.26"
+    },
+    "autoload": {
+        "psr-4": {
+            "Khwua\\BreezeBootstrap\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Khwua\\BreezeBootstrap\\BreezeServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
