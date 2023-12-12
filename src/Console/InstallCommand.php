@@ -84,8 +84,8 @@ class InstallCommand extends \Laravel\Breeze\Console\InstallCommand
         }
 
         // Routes...
-        copy(__DIR__.'/../../../../vendor/laravel/breeze/stubs/default/routes/web.php', base_path('routes/web.php'));
-        copy(__DIR__.'/../../../../vendor/laravel/breeze/stubs/default/routes/auth.php', base_path('routes/auth.php'));
+        copy($breezeStubPath.'/routes/web.php', base_path('routes/web.php'));
+        copy($breezeStubPath.'/routes/auth.php', base_path('routes/auth.php'));
 
         // "Dashboard" Route...
         $this->replaceInFile('/home', '/dashboard', resource_path('views/welcome.blade.php'));
