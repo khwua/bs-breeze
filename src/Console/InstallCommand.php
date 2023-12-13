@@ -62,21 +62,34 @@ class InstallCommand extends \Laravel\Breeze\Console\InstallCommand
         });
 
         $breezeStubPath = base_path('vendor/laravel/breeze/stubs/default');
+
         // Controllers...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Controllers'));
-        (new Filesystem)->copyDirectory($breezeStubPath.'/app/Http/Controllers', app_path('Http/Controllers'));
+        (new Filesystem)->copyDirectory(
+            "{$breezeStubPath}/app/Http/Controllers",
+            app_path('Http/Controllers')
+        );
 
         // Requests...
         (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests'));
-        (new Filesystem)->copyDirectory($breezeStubPath.'/app/Http/Requests', app_path('Http/Requests'));
+        (new Filesystem)->copyDirectory(
+            "{$breezeStubPath}/app/Http/Requests",
+            app_path('Http/Requests')
+        );
 
         // Views...
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/resources/views', resource_path('views'));
+        (new Filesystem)->copyDirectory(
+            __DIR__.'/../../stubs/resources/views',
+            resource_path('views')
+        );
 
         // Components...
         (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/app/View/Components', app_path('View/Components'));
+        (new Filesystem)->copyDirectory(
+            __DIR__.'/../../stubs/app/View/Components',
+            app_path('View/Components')
+        );
 
         // Tests...
         if (! $this->installTests()) {
@@ -84,15 +97,15 @@ class InstallCommand extends \Laravel\Breeze\Console\InstallCommand
         }
 
         // Routes...
-        copy($breezeStubPath.'/routes/web.php', base_path('routes/web.php'));
-        copy($breezeStubPath.'/routes/auth.php', base_path('routes/auth.php'));
+        copy("{$breezeStubPath}/routes/web.php", base_path('routes/web.php'));
+        copy("{$breezeStubPath}/routes/auth.php", base_path('routes/auth.php'));
 
         // "Dashboard" Route...
         $this->replaceInFile('/home', '/dashboard', resource_path('views/welcome.blade.php'));
         $this->replaceInFile('Home', 'Dashboard', resource_path('views/welcome.blade.php'));
         $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
 
-        // Tailwind / Vite...
+        // Bootstrap / Vite...
         copy(__DIR__.'/../../stubs/vite.config.js', base_path('vite.config.js'));
         (new Filesystem)->ensureDirectoryExists(resource_path('scss'));
         copy(__DIR__.'/../../stubs/resources/scss/style.scss', resource_path('scss/style.scss'));
@@ -111,7 +124,7 @@ class InstallCommand extends \Laravel\Breeze\Console\InstallCommand
         }
 
         $this->line('');
-        $this->components->info('Breeze scaffolding installed successfully.');
+        $this->components->info('Bootstrap Breeze scaffolding installed successfully.');
     }
 
     /**
