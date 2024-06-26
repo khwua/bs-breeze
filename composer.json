@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": "^8.1.0",
-        "laravel/framework": "^11.2",
-        "laravel/breeze": "^2.0"
+        "laravel/framework": "^11.9",
+        "laravel/breeze": "^2.1"
     },
     "autoload": {
         "psr-4": {
